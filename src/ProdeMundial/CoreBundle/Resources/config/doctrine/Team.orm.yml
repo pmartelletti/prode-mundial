@@ -1,0 +1,17 @@
+ProdeMundial\CoreBundle\Entity\Team:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        flag:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

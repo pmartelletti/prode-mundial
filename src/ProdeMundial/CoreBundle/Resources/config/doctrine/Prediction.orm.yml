@@ -1,0 +1,22 @@
+ProdeMundial\CoreBundle\Entity\Prediction:
+    type: entity
+    table: null
+    repositoryClass: ProdeMundial\CoreBundle\Entity\PredictionRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        result:
+            type: string
+            length: '1'
+            nullable: true
+    manyToOne:
+        user:
+            targetEntity: ProdeMundial\CoreBundle\Entity\User
+            inversedBy: predictions
+        game:
+            targetEntity: ProdeMundial\CoreBundle\Entity\Game
+    lifecycleCallbacks: {  }

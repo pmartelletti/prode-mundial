@@ -1,0 +1,6 @@
+services:
+    prode.fixtures.creator:
+        class: ProdeMundial\CoreBundle\Manager\PredictionsCreator
+        arguments: [@doctrine.orm.entity_manager]
+        tags:
+          - { name: kernel.event_listener, event: fos_user.registration.completed, method: createPredictions }

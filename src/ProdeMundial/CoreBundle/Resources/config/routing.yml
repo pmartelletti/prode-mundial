@@ -1,0 +1,3 @@
+prode_mundial_core_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: ProdeMundialCoreBundle:Default:index }

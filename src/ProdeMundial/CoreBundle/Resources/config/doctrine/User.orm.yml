@@ -1,0 +1,27 @@
+ProdeMundial\CoreBundle\Entity\User:
+    type: entity
+    table: null
+    repositoryClass: ProdeMundial\CoreBundle\Entity\UserRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        paymentDone:
+            type: boolean
+        firstname:
+            type: string
+            length: 255
+            nullable: true
+        lastname:
+            type: string
+            length: 255
+            nullable: true
+    oneToMany:
+        predictions:
+            targetEntity: ProdeMundial\CoreBundle\Entity\Prediction
+            mappedBy: user
+            cascade: ["all"]
+    lifecycleCallbacks: {  }

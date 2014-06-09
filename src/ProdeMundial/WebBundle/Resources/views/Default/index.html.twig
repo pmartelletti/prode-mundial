@@ -1,0 +1,65 @@
+{% extends 'ProdeMundialWebBundle:Frontend:base.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Proximos partidos</h1>
+            {% for game in nextGames %}
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{ game.date | date('d/m/Y') }}</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            {% set home_team = game.homeTeam %}
+                            <div class="col-md-2">
+                                <img src="{{ flag(home_team.flag) }}" alt="{{ home_team.name }}">
+                            </div>
+                            <div class="col-md-4">
+                                <strong>{{ home_team }}</strong>
+                            </div>
+                            {% set away_team = game.awayTeam %}
+                            <div class="col-md-4">
+                                <strong>{{ away_team }}</strong>
+                            </div>
+                            <div class="col-md-2">
+                                <img src="{{ flag(away_team.flag) }}" alt="{{ away_team.name }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="col-md-5 col-md-offset-1">
+            <h1>Ultimos resultados</h1>
+            {% for game in recentGames %}
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{ game.date | date('d/m/Y') }}</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            {% set home_team = game.homeTeam %}
+                            <div class="col-md-2">
+                                <img src="{{ flag(home_team.flag) }}" alt="{{ home_team.name }}">
+                            </div>
+                            <div class="col-md-3">
+                                <strong>{{ home_team }}</strong>
+                            </div>
+                            <div class="col-md-2">
+                                {{ game.homeGoals }} - {{ game.awayGoals }}
+                            </div>
+                            {% set away_team = game.awayTeam %}
+                            <div class="col-md-3">
+                                <strong>{{ away_team }}</strong>
+                            </div>
+                            <div class="col-md-2">
+                                <img src="{{ flag(away_team.flag) }}" alt="{{ away_team.name }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

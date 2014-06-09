@@ -1,0 +1,94 @@
+Grupo A:
+
+(1) Thu Jun/12 17:00   BR - HR       @ Arena de São Paulo, São Paulo (UTC-3)
+(2) Fri Jun/13 13:00   MX - CM      @ Estádio das Dunas, Natal (UTC-3)
+
+(17) Tue Jun/17 16:00   BR - MX        @ Estádio Castelão, Fortaleza (UTC-3)
+(18) Wed Jun/18 18:00   CM - HR     @ Arena Amazônia, Manaus (UTC-4)
+
+(33) Mon Jun/23 17:00   CM - BR      @ Brasília (UTC-3)
+(34) Mon Jun/23 17:00   HR  - MX      @ Recife (UTC-3)
+
+
+Grupo B:
+
+(3) Fri Jun/13 16:00   ES - NL     @ Arena Fonte Nova, Salvador (UTC-3)
+(4) Fri Jun/13 18:00   CL - AU       @ Arena Pantanal, Cuiabá (UTC-4)
+
+(19) Wed Jun/18 16:00   ES - CL             @ Estádio do Maracanã, Rio de Janeiro (UTC-3)
+(20) Wed Jun/18 13:00   AU - NL   @ Estádio Beira-Rio, Porto Alegre (UTC-3)
+
+(35) Mon Jun/23 13:00   AU - ES         @ Curitiba (UTC-3)
+(36) Mon Jun/23 13:00   NL - CL       @ São Paulo (UTC-3)
+
+
+Grupo C:
+
+(5) Sat Jun/14 13:00   CO - GR          @ Estádio Mineirão, Belo Horizonte (UTC-3)
+(6) Sat Jun/14 22:00   CI - JP      @ Arena Pernambuco, Recife (UTC-3)
+
+(21) Thu Jun/19 13:00   CO - CI   @ Estádio Nacional Mané Garrincha, Brasília (UTC-3)
+(22) Thu Jun/19 19:00   JP - GR             @ Estádio das Dunas, Natal (UTC-3)
+
+(37) Tue Jun/24 16:00   JP - CO            @ Cuiabá (UTC-4)
+(38) Tue Jun/24 17:00   CI - GR      @ Fortaleza (UTC-3)
+
+
+Grupo D:
+
+(7) Sat Jun/14 16:00   UY - CR       @ Estádio Castelão, Fortaleza (UTC-3)
+(8) Sat Jun/14 18:00   EN - IT            @ Arena Amazônia, Manaus (UTC-4)
+
+(23) Thu Jun/19 16:00   UY - EN          @ Arena de São Paulo, São Paulo (UTC-3)
+(24) Fri Jun/20 13:00   IT - CR         @ Arena Pernambuco, Recife (UTC-3)
+
+(39) Tue Jun/24 13:00   IT - UY             @ Natal (UTC-3)
+(40) Tue Jun/24 13:00   CR - EN        @ Belo Horizonte (UTC-3)
+
+
+Grupo E:
+
+(9)  Sun Jun/15 13:00   CH - EC      @ Estádio Nacional Mané Garrincha, Brasília (UTC-3)
+(10) Sun Jun/15 16:00   FR - HN          @ Estádio Beira-Rio, Porto Alegre (UTC-3)
+
+(25) Fri Jun/20 16:00   CH - FR       @ Arena Fonte Nova, Salvador (UTC-3)
+(26) Fri Jun/20 19:00   HN - EC         @ Arena da Baixada, Curitiba (UTC-3)
+
+(41) Wed Jun/25 16:00   HN - CH     @ Manaus (UTC-4)
+(42) Wed Jun/25 17:00   EC  - FR          @ Rio de Janeiro (UTC-3)
+
+
+Grupo F:
+
+(11) Sun Jun/15 19:00   AR - BA    @ Estádio do Maracanã, Rio de Janeiro (UTC-3)
+(12) Mon Jun/16 16:00   IR - NG                    @ Arena da Baixada, Curitiba (UTC-3)
+
+(27) Sat Jun/21 13:00   AR - IR                  @ Estádio Mineirão, Belo Horizonte (UTC-3)
+(28) Sat Jun/21 18:00   NG - BA      @ Arena Pantanal, Cuiabá (UTC-4)
+
+(43) Wed Jun/25 13:00   NG - AR               @ Porto Alegre (UTC-3)
+(44) Wed Jun/25 13:00   BA - IR         @ Salvador (UTC-3)
+
+
+Grupo G:
+
+(13) Mon Jun/16 13:00   DE - PT           @ Arena Fonte Nova, Salvador (UTC-3)
+(14) Mon Jun/16 19:00   GH - US        @ Estádio das Dunas, Natal (UTC-3)
+
+(29) Sat Jun/21 16:00   DE - GH              @ Fortaleza (UTC-3)
+(30) Sun Jun/22 18:00   US - PT     @ Manaus (UTC-4)
+
+(45) Thu Jun/26 13:00   US - DE       @ Recife (UTC-3)
+(46) Thu Jun/26 13:00   PT - GH              @ Brasília (UTC-3)
+
+
+Grupo H:
+
+(15) Tue Jun/17 13:00   BE - DZ         @ Estádio Mineirão, Belo Horizonte (UTC-3)
+(16) Tue Jun/17 18:00   RU - KR      @ Arena Pantanal, Cuiabá (UTC-4)
+
+(31) Sun Jun/22 13:00   BE - RU          @ Rio de Janeiro (UTC-3)
+(32) Sun Jun/22 16:00   KR - DZ     @ Porto Alegre (UTC-3)
+
+(47) Thu Jun/26 17:00   KR - BE     @ São Paulo (UTC-3)
+(48) Thu Jun/26 17:00   DZ - RU          @ Curitiba (UTC-3)

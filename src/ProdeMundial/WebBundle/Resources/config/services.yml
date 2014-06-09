@@ -1,0 +1,9 @@
+parameters:
+#    prode_mundial_web.example.class: ProdeMundial\WebBundle\Example
+
+services:
+  prodemundial.web.flag_extension:
+          class: ProdeMundial\WebBundle\Twig\FlagExtension
+          arguments: [@service_container]
+          tags:
+              - { name: twig.extension }

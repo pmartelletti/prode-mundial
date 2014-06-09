@@ -1,0 +1,33 @@
+- { name: Argentina, flag: AR}
+- { name: Brasil, flag: BR }
+- { name: Croacia, flag: HR}
+- { name: Mexico, flag: MX }
+- { name: Camerun, flag: CM }
+- { name: Espana, flag: ES }
+- { name: Holanda, flag: NL}
+- { name: Chile, flag: CL}
+- { name: Australia, flag: AU}
+- { name: Colombia, flag: CO}
+- { name: Grecia, flag: GR}
+- { name: Costa de Marfil, flag: CI}
+- { name: Japon, flag: JP}
+- { name: Uruguay, flag: UY}
+- { name: Costa Rica, flag: CR}
+- { name: Inglaterra, flag: EN }
+- { name: Italia, flag: IT }
+- { name: Suiza, flag: CH}
+- { name: Ecuador, flag: EC }
+- { name: Francia, flag: FR }
+- { name: Honduras, flag: HN }
+- { name: Bosnia, flag: BA }
+- { name: Iran, flag: IR }
+- { name: Nigeria, flag: NG }
+- { name: Alemania, flag: DE}
+- { name: Portugal, flag: PT }
+- { name: Ghana, flag: GH}
+- { name: EE.UU., flag: US }
+- { name: Belgica, flag: BE}
+- { name: Argelia, flag: DZ}
+- { name: Rusia, flag: RU }
+- { name: Corea del Sur, flag: KR}
+
