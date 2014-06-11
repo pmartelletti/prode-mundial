@@ -56,7 +56,7 @@ class LoadMatches extends AbstractFixture implements OrderedFixtureInterface, Co
                     $game = new Game();
                     $hour = end($matchInfo) == '(UTC-3)' ? (int) $matchInfo['3'] : $matchInfo['3'] + 1;
                     $gameDate = new \DateTime(date('m/d/Y', strtotime(str_replace('/', ' ', $matchInfo[2]))));
-                    $gameDate->setTime($hour, 0); $gameDate->setTimezone(new \DateTimeZone('America/Buenos_Aires'));
+                    $gameDate->setTime($hour, 0); //$gameDate->setTimezone(new \DateTimeZone('America/Buenos_Aires'));
                     $game->setDate($gameDate);
                     $game->setHomeTeam($this->getReference($matchInfo[4]));
                     $game->setAwayTeam($this->getReference($matchInfo[6]));

@@ -197,6 +197,7 @@ class User extends BaseUser
     {
         $this->payment = $payment;
         if($this->payment->getStatus() == "approved") {
+            $payment->setUser($this);
             $this->setPaymentDate($payment->getDateUpdated());
             $this->setPaymentDone(true);
         }
