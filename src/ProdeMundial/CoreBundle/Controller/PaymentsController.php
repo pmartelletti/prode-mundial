@@ -19,7 +19,7 @@ class PaymentsController extends Controller
             return new Response('Este URL debe ser utilizado por el IPN.', 403);
 
         $em = $this->getDoctrine()->getManager();
-//        $em->persist($payment);
+        $em->persist($payment);
         $em->flush();
 
         return new Response('', 200);

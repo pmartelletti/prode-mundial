@@ -7,6 +7,7 @@ use Doctrine\ORM\EntityManager;
 use ProdeMundial\CoreBundle\Entity\Payment;
 use ProdeMundial\CoreBundle\Entity\PaymentRepository;
 use ProdeMundial\CoreBundle\Entity\User;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\RouterInterface;
 
 class MercadoPagoGateway
@@ -57,25 +58,32 @@ class MercadoPagoGateway
 
     public function processPayment($id) {
         $paymentInfo = $this->gateweay->get_payment_info($id);
-        $collection = $paymentInfo['collection'];
-        $payer = $paymentInfo['payer'];
-        /** @var User $user */
-        $user = $this->em->getRepository('ProdeMundialCoreBundle:User')->findOneByEmail($payer['email']);
-        /** @var Payment $payment */
-        $payment = $this->em->getRepository('ProdeMundialCoreBundle:Payment')->findOneByExternalId($id);
-        if (!$payment) {
-            $payment = new Payment();
-            $payment->setSource('mercadopago');
-            $payment->setExternalId($id);
+        if ($paymentInfo['status'] == 200 ) {
+            $paymentInfo = $paymentInfo['response'];
+            $collection = $paymentInfo['collection'];
+            $payer = $collection['payer'];
+            /** @var User $user */
+            $user = $this->em->getRepository('ProdeMundialCoreBundle:User')->findOneByEmail($payer['email']);
+            /** @var Payment $payment */
+            $payment = $this->em->getRepository('ProdeMundialCoreBundle:Payment')->findOneByExternalId($id);
+            if (!$payment) {
+                $payment = new Payment();
+                $payment->setSource('mercadopago');
+                $payment->setExternalId($id);
+            }
+            // we fill in the remaining fields
+            $payment->setStatus($collection['status']);
+            $payment->setStatusDetail($collection['status_detail']);
+            $payment->setDateCreated(new \DateTime($collection['date_created']));
+            $payment->setDateUpdated(new \DateTime($collection['last_modified']));
+
+            if($user)
+                $user->setPayment($payment);
+
+            return $payment;
         }
-        // we fill in the remaining fields
-        $payment->setStatus($collection['status']);
-        $payment->setStatusDetail($collection['status_detail']);
-        $payment->setDateCreated(new \DateTime($collection['date_created']));
-        $payment->setDateUpdated(new \DateTime($collection['last_modified']));
 
-        $user->setPayment($payment);
+        throw new BadRequestHttpException();
 
-        return $payment;
     }
 } 

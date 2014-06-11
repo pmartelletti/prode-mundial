@@ -17,7 +17,7 @@ class GameHandler
     {
         $games = $this->em->getRepository('ProdeMundialCoreBundle:Game')->findNextGames($games);
 
-        $result = [];
+        $result = array();
         $date = null;
         foreach($games as $game) {
             if (empty($date) or $date->format('d/m') != $game->getDate()->format('d/m')) {
