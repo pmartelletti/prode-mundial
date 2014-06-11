@@ -17,6 +17,6 @@ parameters:
     debug_toolbar:          true
     debug_redirects:        false
     use_assetic_controller: true
-    mercadopago_id: 6262569024956458
-    mercadopago_secret: 8ZxQcw1QFCdwPA9GQEoVDiTwkjN3aiyW
+    mercadopago_id: change_me
+    mercadopago_secret: super_change_me
     mercadopago_endpoint: sandbox_init_point
