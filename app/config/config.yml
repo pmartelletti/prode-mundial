@@ -75,3 +75,26 @@ fos_user:
     registration:
         confirmation:
             enabled:    false # change to true for required email confirmation
+
+fos_rest:
+    param_fetcher_listener: force
+    body_listener: true
+    body_converter:
+        enabled: true
+    format_listener: true
+    view:
+        view_response_listener: 'force'
+    access_denied_listener:
+        json: true
+
+sensio_framework_extra:
+    view:    { annotations: false }
+    router:  { annotations: true }
+    request: { converters: true }
+
+stof_doctrine_extensions:
+    default_locale: en
+    translation_fallback: true
+    orm:
+        default:
+            sluggable: true

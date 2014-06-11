@@ -54,9 +54,14 @@ class LoadMatches extends AbstractFixture implements OrderedFixtureInterface, Co
                     $matchInfo = explode(" ", preg_replace( '/\s+/', ' ', $line ));
                     // we have a game! add it to the group
                     $game = new Game();
-                    $game->setDate( new \DateTime(date('m/d/Y', strtotime(str_replace('/', ' ', $matchInfo[2])))));
+                    $hour = end($matchInfo) == '(UTC-3)' ? (int) $matchInfo['3'] : $matchInfo['3'] + 1;
+                    $gameDate = new \DateTime(date('m/d/Y', strtotime(str_replace('/', ' ', $matchInfo[2]))));
+                    $gameDate->setTime($hour, 0); $gameDate->setTimezone(new \DateTimeZone('America/Buenos_Aires'));
+                    $game->setDate($gameDate);
                     $game->setHomeTeam($this->getReference($matchInfo[4]));
                     $game->setAwayTeam($this->getReference($matchInfo[6]));
+                    $game->setVenue(join(' ', array_splice($matchInfo, 7)));
+                    $game->setFifaMatchId(str_replace(array( '(', ')' ), '', $matchInfo[0]));
 
                     // we add the match to the group
                     $group->addGame($game);

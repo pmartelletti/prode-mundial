@@ -8,12 +8,12 @@ use Symfony\Component\Templating\Helper\CoreAssetsHelper;
 
 class FlagExtension extends  \Twig_Extension
 {
-    /** @var \Symfony\Component\Templating\Helper\CoreAssetsHelper  */
-    private $assetsHelper;
+
+    private $container;
 
     public function __construct(ContainerInterface $container)
     {
-        $this->assetsHelper = $container->get('templating.helper.assets');
+        $this->container = $container;
     }
 
     public function getFunctions()
@@ -27,7 +27,7 @@ class FlagExtension extends  \Twig_Extension
     {
         $asset = sprintf('bundles/prodemundialweb/img/flags/%s.png', strtolower($flag));
 
-        return $this->assetsHelper->getUrl($asset);
+        return $this->container->get('templating.helper.assets')->getUrl($asset);
     }
 
     public function getName()

@@ -2,36 +2,72 @@
 
 {% block content %}
     <div class="row">
+        <div class="col-md-12">
+            {% if not app.user.paymentDone %}
+            <div class="alert alert-warning">
+                <p><i class="fa fa-warning"></i> Actualmente estas participando en el PRODE gratuito, es decir, competis
+                    por el honor. Tenes tiempo hasta el 15/06 a la medianoche para inscribirte al PRODE pago (si, te
+                    damos los primeros partidos de yapa) ingresando <a href="{{ path('fos_user_profile_show') }}">aca</a> .</p>
+            </div>
+            {% endif %}
+            <div class="alert alert-warning">
+                <p>
+                    <i class="fa fa-calendar"></i> Tene en cuenta que los partidos de la segunda fase seran calculados una vez que termine la fase de grupos. Estate atento para hacer tu pronostico antes del inicio de cada uno de esos partidos.
+                </p>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-6">
-            <h1>Proximos partidos</h1>
-            {% for game in nextGames %}
+            <h2>Proximos partidos</h2>
+            {% for data in nextGames %}
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">{{ game.date | date('d/m/Y') }}</h3>
+                        <h3 class="panel-title">
+                            {{ data.date | date('D d M') }}
+                        </h3>
                     </div>
                     <div class="panel-body">
+                    {% for game in data.games %}
                         <div class="row">
                             {% set home_team = game.homeTeam %}
-                            <div class="col-md-2">
+                            <div class="col-md-1">
                                 <img src="{{ flag(home_team.flag) }}" alt="{{ home_team.name }}">
                             </div>
                             <div class="col-md-4">
                                 <strong>{{ home_team }}</strong>
                             </div>
+                            <div class="col-md-2">
+                                {% if not game.isPlayed %}
+                                    <span class="result">{{ game.date | date('H:i') }}</span>
+                                {% else %}
+                                    {# todo: mostrar el resultado#}
+                                {% endif %}
+                            </div>
                             {% set away_team = game.awayTeam %}
-                            <div class="col-md-4">
+                            <div class="col-md-4 text-right">
                                 <strong>{{ away_team }}</strong>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-1">
                                 <img src="{{ flag(away_team.flag) }}" alt="{{ away_team.name }}">
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <small>{{ game.venue }}</small>
+                            </div>
+                        </div>
+                        {% if not loop.last %}
+                            <hr>
+                        {% endif %}
+                    {% endfor %}
                     </div>
                 </div>
             {% endfor %}
         </div>
         <div class="col-md-5 col-md-offset-1">
-            <h1>Ultimos resultados</h1>
+            <h2>Ultimos resultados</h2>
             {% for game in recentGames %}
                 <div class="panel panel-primary">
                     <div class="panel-heading">

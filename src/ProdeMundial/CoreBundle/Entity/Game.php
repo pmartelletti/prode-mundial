@@ -20,6 +20,11 @@ class Game
     private $date;
 
     /**
+     * @var string
+     */
+    private $venue;
+
+    /**
      * @var Team
      */
     private $homeTeam;
@@ -48,6 +53,11 @@ class Game
      * @var TeamsGroup
      */
     private $group;
+
+    /**
+     * @var integer
+     */
+    private $fifaMatchId;
 
 
     /**
@@ -81,6 +91,25 @@ class Game
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * @param string $venue
+     *
+     * @return $this
+     */
+    public function setVenue($venue)
+    {
+        $this->venue = $venue;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVenue()
+    {
+        return $this->venue;
     }
 
     /**
@@ -207,5 +236,31 @@ class Game
     public function getAwayTeam()
     {
         return $this->awayTeam;
+    }
+
+    /**
+     * @param int $fifaMatchId
+     *
+     * @return $this
+     */
+    public function setFifaMatchId($fifaMatchId)
+    {
+        $this->fifaMatchId = $fifaMatchId;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getFifaMatchId()
+    {
+        return $this->fifaMatchId;
+    }
+
+    public function isPlayed()
+    {
+        $now = new \DateTime();
+
+        return ($this->getDate() < $now) and ($this->getProdeResult());
     }
 }

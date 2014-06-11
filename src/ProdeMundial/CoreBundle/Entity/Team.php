@@ -24,6 +24,11 @@ class Team
      */
     private $flag;
 
+    /**
+     * @var string
+     */
+    private $flagUrl;
+
 
     /**
      * Get id
@@ -84,5 +89,24 @@ class Team
     public function __toString()
     {
         return $this->getName();
+    }
+
+    /**
+     * @param string $flagUrl
+     *
+     * @return $this
+     */
+    public function setFlagUrl($flagUrl)
+    {
+        $this->flagUrl = $flagUrl;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFlagUrl()
+    {
+        return $this->flagUrl;
     }
 }

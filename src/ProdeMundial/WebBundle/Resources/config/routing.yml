@@ -1,3 +1,20 @@
 app_home:
   pattern: /
   defaults: { _controller: ProdeMundialCoreBundle:Default:index }
+
+predictions:
+  pattern: /my/predictions
+  defaults:
+    _controller: ProdeMundialCoreBundle:Predictions:myPredictions
+    _format: html
+
+payments:
+  prefix: /payments
+  resource: @ProdeMundialWebBundle/Resources/config/routing/payments.yml
+
+# predictions API
+api_predictions:
+  prefix: /predictions
+  resource: @ProdeMundialWebBundle/Resources/config/routing/predictions.yml
+  defaults:
+      _format: json

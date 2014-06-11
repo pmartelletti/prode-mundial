@@ -1,0 +1,3 @@
+payments_notification:
+    pattern: /notifications
+    defaults: { _controller: ProdeMundialCoreBundle:Payments:notifications }

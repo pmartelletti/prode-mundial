@@ -27,6 +27,11 @@ class User extends BaseUser
     private $predictions;
 
     /**
+     * @var Payment
+     */
+    private $payment;
+
+    /**
      * @var \DateTime
      */
     private $paymentDate;
@@ -181,5 +186,29 @@ class User extends BaseUser
     public function getFullName()
     {
         return $this->getFirstname() . ' ' . $this->getLastname();
+    }
+
+    /**
+     * @param \ProdeMundial\CoreBundle\Entity\Payment $payment
+     *
+     * @return $this
+     */
+    public function setPayment($payment)
+    {
+        $this->payment = $payment;
+        if($this->payment->getStatus() == "approved") {
+            $this->setPaymentDate($payment->getDateUpdated());
+            $this->setPaymentDone(true);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return \ProdeMundial\CoreBundle\Entity\Payment
+     */
+    public function getPayment()
+    {
+        return $this->payment;
     }
 }

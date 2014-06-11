@@ -11,6 +11,10 @@ ProdeMundial\CoreBundle\Entity\Game:
     fields:
         date:
             type: datetime
+        venue:
+            type: string
+            length: 255
+            nullable: true
         awayGoals:
             type: integer
             column: away_goals
@@ -24,6 +28,9 @@ ProdeMundial\CoreBundle\Entity\Game:
             length: '1'
             column: prode_result
             nullable: true
+        fifaMatchId:
+            type: integer
+            column: fifa_match_id
     manyToOne:
         group:
             targetEntity: ProdeMundial\CoreBundle\Entity\TeamsGroup

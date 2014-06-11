@@ -1,0 +1,42 @@
+<script>
+'use strict';
+
+/* Controllers */
+
+var imgDir = '{{ asset('bundles/prodemundialweb/img/flags/') }}';
+
+var phonecatApp = angular.module('prodeApp', ['prodeServices', 'toastr']);
+
+phonecatApp.controller('PredictionsCtrl', function($scope, $http, $window, Predictions, toastr) {
+    $scope.predictions = Predictions.query();
+
+    $scope.displayGroup = 'Grupo-A';
+    $scope.imgDir = $window.imgDir;
+
+    $scope.setGroup = function(group) {
+        $scope.displayGroup = group;
+    }
+
+    $scope.patchPrediction = function($event, prediction_id, result) {
+        var elem = $($event.target);
+//        Predictions.patch({predictionId: 241, })
+        var route = Routing.generate('predictions_list') + prediction_id;
+        var patch_data = {"prediction":{"result": result}};
+        $http({method: 'PATCH', url: route, data: patch_data}).
+            success(function(data, status, headers, config) {
+                    clearPredictionLabels(elem);
+                    toastr.success('Su pronostico fue computado correctamente.');
+            }).
+            error(function(data, status, headers, config) {
+                toastr.error(data[0].message, 'Error al procesar el pronostico.');
+            }
+        );
+    }
+});
+
+    function clearPredictionLabels(elem) {
+        elem.closest('.row').find('span.label').removeClass('label label-success');
+        elem.addClass('label label-success');
+    }
+
+</script>

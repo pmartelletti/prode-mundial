@@ -1,0 +1,35 @@
+ProdeMundial\CoreBundle\Entity\Payment:
+    type: entity
+    table: null
+    repositoryClass: ProdeMundial\CoreBundle\Entity\PaymentRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        source:
+            type: string
+            length: 255
+        externalId:
+            type: integer
+            column: external_id
+        dateCreated:
+            type: datetime
+            column: date_created
+        dateUpdated:
+            type: datetime
+            column: date_updated
+        status:
+            type: string
+            length: 255
+        statusDetail:
+            type: string
+            length: 255
+            column: status_detail
+    oneToOne:
+        user:
+            targetEntity: ProdeMundial\CoreBundle\Entity\User
+            inversedBy: payment
+    lifecycleCallbacks: {  }

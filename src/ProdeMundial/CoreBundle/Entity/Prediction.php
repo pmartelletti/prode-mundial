@@ -4,6 +4,7 @@ namespace ProdeMundial\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ProdeMundial\CoreBundle\Entity\User;
+use JMS\Serializer\Annotation\Exclude;
 
 /**
  * Prediction
@@ -17,6 +18,7 @@ class Prediction
 
     /**
      * @var User
+     * @Exclude
      */
     private $user;
 

@@ -10,6 +10,8 @@
 
     <title>Prode Mundial</title>
 
+    {% block stylesheets %}
+
     <!-- Bootstrap Core CSS -->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="{{ asset('bundles/prodemundialweb/css/yeti.min.css') }}" rel="stylesheet" type="text/css">
@@ -17,8 +19,7 @@
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
 
-    <!-- Custom styles for this template -->
-    <link href="navbar-fixed-top.css" rel="stylesheet">
+    {% endblock %}
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -43,10 +44,12 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#about">Mis Pronosticos</a></li>
+                {% set route = app.request.attributes.get('_route') %}
+                <li {% if route == 'app_home' %}class="active"{% endif %}><a href="{{ path('app_home') }}">Home</a></li>
+                <li {% if route == 'predictions' %}class="active"{% endif %}><a href="{{ path('predictions') }}">Mis Pronosticos</a></li>
                 <li><a href="#contact">Resultados / Fixture</a></li>
                 <li><a href="#contact">Posiciones</a></li>
+                <li><a href="#contact">Ayuda / FAQ</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
@@ -63,15 +66,18 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container" ng-app="prodeApp">
     {% block content %}
     {% endblock %}
 </div> <!-- /container -->
 
+{% block javascripts %}
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
 <!-- Core JavaScript Files -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-
+{% endblock %}
 
 </body>
 </html>

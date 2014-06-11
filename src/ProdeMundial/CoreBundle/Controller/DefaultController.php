@@ -3,13 +3,14 @@
 namespace ProdeMundial\CoreBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
     public function indexAction()
     {
         return $this->render('ProdeMundialWebBundle:Default:index.html.twig', array(
-            'nextGames' => $this->getDoctrine()->getRepository('ProdeMundialCoreBundle:Game')->findNextGames(),
+            'nextGames' => $this->get('prodemundial.core.game_handler')->getNextGamesGroupedByDate(8),
             'recentGames' => $this->getDoctrine()->getRepository('ProdeMundialCoreBundle:Game')->findRecentGames(),
         ));
     }

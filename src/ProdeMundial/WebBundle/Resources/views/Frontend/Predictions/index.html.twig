@@ -1,0 +1,79 @@
+{% extends 'ProdeMundialWebBundle:Frontend:base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/prodemundialweb/vendor/angular-toastr/dist/angular-toastr.min.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h2 class="text-right">Mis Pronosticos</h2>
+    </div>
+</div>
+<div class="row" ng-controller="PredictionsCtrl">
+    <div class="col-md-3">
+        <div class="list-group">
+            {% for group in groups %}
+            <a href="#" class="list-group-item" ng-click="setGroup('{{ group.slug }}')"
+               ng-class="{active:displayGroup=='{{ group.slug }}'}">{{ group }}</a>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="alert alert-dismissable alert-success">
+            <p><i class="fa fa-warning"></i> Para apostar, debes seleccionar el nombre del pais que crees va a ganar
+            el partido, o la 'X' si crees que va a terminar en empate. Tus cambios seran guardados automaticamente y una etiqueta
+            verde aparecera en el resultado para informar tu decision.</p>
+            <p>La veda para cada partido comienza 20 minutos antes del comienzo del mismo. Haste ese momento, podes cambiar tus pronosticos cuantas veces quieras.</p>
+        </div>
+        <div class="row">
+            <div class="col-md-6" ng-repeat="prediction in predictions | filter:displayGroup">
+                {% verbatim %}
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            {{ prediction.game.date | date:'EEE d MMM - H:mm' }} hs.
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row" style="margin-bottom: 10px">
+                            <div class="col-xs-1">
+                                <img ng-src="{{ imgDir + prediction.game.home_team.flag | lowercase }}.png" />
+                            </div>
+                            <div class="col-xs-4">
+                                <span ng-class="{'label label-success':prediction.result == 'H'}" ng-click="patchPrediction($event, prediction.id, 'H')">{{ prediction.game.home_team.name }}</span>
+                            </div>
+                            <div class="col-xs-2">
+                                <span ng-class="{'label label-success':prediction.result == 'D'}" ng-click="patchPrediction($event, prediction.id, 'D')" class="result">X</span>
+                            </div>
+                            <div class="col-xs-4 text-right">
+                                <span ng-class="{'label label-success':prediction.result == 'A'}" ng-click="patchPrediction($event, prediction.id, 'A')">{{ prediction.game.away_team.name }}</span>
+                            </div>
+                            <div class="col-xs-1">
+                                <img ng-src="{{ imgDir + prediction.game.away_team.flag | lowercase }}.png" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <small>{{ prediction.game.venue }}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endverbatim %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/prodemundialweb/vendor/angular/angular.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/prodemundialweb/vendor/angular-resource/angular-resource.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/prodemundialweb/js/services.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/prodemundialweb/vendor/angular-toastr/dist/angular-toastr.min.js') }}"></script>
+    {#<script type="text/javascript" src="{{ asset('bundles/prodemundialweb/js/controllers.js.twig') }}"></script>#}
+    {% include 'ProdeMundialWebBundle:Angular:controllers.js.twig' %}
+{% endblock %}

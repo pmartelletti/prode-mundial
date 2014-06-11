@@ -24,4 +24,9 @@ ProdeMundial\CoreBundle\Entity\User:
             targetEntity: ProdeMundial\CoreBundle\Entity\Prediction
             mappedBy: user
             cascade: ["all"]
+    oneToOne:
+        payment:
+            targetEntity: ProdeMundial\CoreBundle\Entity\Payment
+            mappedBy: user
+            cascade: ["all"]
     lifecycleCallbacks: {  }

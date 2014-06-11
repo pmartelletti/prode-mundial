@@ -1,0 +1,12 @@
+predictions_list:
+    pattern: /.{_format}
+    defaults: { _controller: ProdeMundialCoreBundle:Predictions:index }
+    options:
+        expose: true
+
+predictions_update:
+    pattern: /{id}.{_format}
+    defaults: { _controller: ProdeMundialCoreBundle:Predictions:update }
+    methods: [PATCH]
+    options:
+        expose: true

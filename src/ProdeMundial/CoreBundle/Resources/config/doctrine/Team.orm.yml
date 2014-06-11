@@ -14,4 +14,8 @@ ProdeMundial\CoreBundle\Entity\Team:
         flag:
             type: string
             length: 255
+        flagUrl:
+            type: string
+            length: 255
+            nullable: true
     lifecycleCallbacks: {  }

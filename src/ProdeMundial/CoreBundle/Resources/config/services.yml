@@ -1,1 +1,14 @@
 services:
+    prodemundial.core.game_handler:
+        class: ProdeMundial\CoreBundle\Handler\GameHandler
+        arguments: [@doctrine.orm.entity_manager]
+
+    prodemundial.core.mercadopago_preferences:
+        class: ProdeMundial\CoreBundle\Payments\MercadoPagoGateway
+        arguments: [%mercadopago_id%, %mercadopago_secret%, @router, @doctrine.orm.entity_manager]
+
+    prodemundial.twig.mercadopago_extension:
+        class: ProdeMundial\CoreBundle\Twig\MercadoPagoExtension
+        arguments: [@security.context, @prodemundial.core.mercadopago_preferences, %mercadopago_endpoint%]
+        tags:
+          - { name: twig.extension }

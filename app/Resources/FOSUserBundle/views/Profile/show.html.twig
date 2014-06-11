@@ -1,0 +1,47 @@
+{% extends 'ProdeMundialWebBundle:Frontend:base.html.twig' %}
+
+{% block content %}
+    <div class="fos_user_user_show">
+        <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+        <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+    </div>
+    {% if not user.paymentDone %}
+    <div>
+        {{ mercadopago_payment() }}
+    </div>
+    {% else %}
+        {% set payment = user.payment %}
+        <h3>Tu pago fue procesado con exito</h3>
+        <p>Estas jugando la version paga del PRODE y competis por el premio final, que sera anunciado cuando cierre la inscripcion al mismo, el 16/06.</p>
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">Detalle de tu pago</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <tr>
+                        <th># Pago</th>
+                        <td>{{ payment.externalId }}</td>
+                    </tr>
+                    <tr>
+                        <th>Fecha de Pago</th>
+                        <td>{{ payment.dateUpdated }}</td>
+                    </tr>
+                    <tr>
+                        <th>Plataforma de pago</th>
+                        <td>{{ payment.source | capitalize }}</td>
+                    </tr>
+                    <tr>
+                        <th>Estado</th>
+                        <td>{{ payment.statusDetail }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="https://www.mercadopago.com/org-img/jsapi/mptools/buttons/render.js"></script>
+{% endblock %}

@@ -30,4 +30,5 @@
 - { name: Argelia, flag: DZ}
 - { name: Rusia, flag: RU }
 - { name: Corea del Sur, flag: KR}
+- { name: A definir, flag: fake}
 

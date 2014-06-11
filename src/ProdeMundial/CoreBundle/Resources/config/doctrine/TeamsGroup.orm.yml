@@ -11,6 +11,15 @@ ProdeMundial\CoreBundle\Entity\TeamsGroup:
         name:
             type: string
             length: 255
+        slug:
+            type: string
+            length: 128
+            gedmo:
+              slug:
+                style: camel
+                separator: -
+                fields:
+                  - name
     oneToMany:
         games:
             targetEntity: ProdeMundial\CoreBundle\Entity\Game
