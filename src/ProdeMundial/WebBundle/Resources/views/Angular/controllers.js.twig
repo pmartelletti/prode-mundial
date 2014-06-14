@@ -24,8 +24,12 @@ phonecatApp.controller('PredictionsCtrl', function($scope, $http, $window, Predi
         var patch_data = {"prediction":{"result": result}};
         $http({method: 'PATCH', url: route, data: patch_data}).
             success(function(data, status, headers, config) {
-                    clearPredictionLabels(elem);
-                    toastr.success('Su pronostico fue computado correctamente.');
+                    if (data.message != undefined) {
+                        toastr.error(data.message, 'Error al procesar el pronostico.');
+                    } else {
+                        clearPredictionLabels(elem);
+                        toastr.success('Su pronostico fue computado correctamente.');
+                    }
             }).
             error(function(data, status, headers, config) {
                 toastr.error(data[0].message, 'Error al procesar el pronostico.');

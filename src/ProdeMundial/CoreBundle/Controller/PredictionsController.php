@@ -10,7 +10,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\Controller\Annotations\RequestParam;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -41,7 +43,10 @@ class PredictionsController extends FOSRestController
 
         if ($lastUpdatableTime < new \DateTime() )
         {
-            throw new HttpException(400, 'La veda para esta partido ya ha empezado!');
+            return new JsonResponse(array(
+                "message" => "La Veda Para este partido ya ha empezado",
+                "status" => "error"
+            ));
         }
 
         $form = $this->createForm(new PredictionType(), $prediction, array(
