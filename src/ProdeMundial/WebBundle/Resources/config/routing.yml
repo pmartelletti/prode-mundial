@@ -8,6 +8,12 @@ predictions:
     _controller: ProdeMundialCoreBundle:Predictions:myPredictions
     _format: html
 
+standings:
+  pattern: /my/standings
+  defaults:
+    _controller: ProdeMundialCoreBundle:Standings:index
+    _format: html
+
 payments:
   prefix: /payments
   resource: @ProdeMundialWebBundle/Resources/config/routing/payments.yml
@@ -16,5 +22,12 @@ payments:
 api_predictions:
   prefix: /predictions
   resource: @ProdeMundialWebBundle/Resources/config/routing/predictions.yml
+  defaults:
+      _format: json
+
+# standings API
+api_standings:
+  prefix: /standings
+  resource: @ProdeMundialWebBundle/Resources/config/routing/standings.yml
   defaults:
       _format: json

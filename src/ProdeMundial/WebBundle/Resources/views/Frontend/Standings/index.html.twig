@@ -1,0 +1,75 @@
+{% extends 'ProdeMundialWebBundle:Frontend:base.html.twig' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h2 class="text-right">Posiciones</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h3>Posiciones Generales</h3>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Pos.</th>
+                <th>Usuario</th>
+                <th>Puntos</th>
+            </tr>
+            <tbody>
+            {% for i,standing in generalStandings %}
+            <tr {% if loop.first %} class="success"{% endif %}>
+                <td>#{{ i+1 }}</td>
+                <td>{{ standing.username }}</td>
+                <td>{{ standing.points }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+            </thead>
+        </table>
+    </div>
+    <div class="col-md-4">
+        <h3>Posiciones Prode Pago</h3>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Pos.</th>
+                <th>Usuario</th>
+                <th>Puntos</th>
+            </tr>
+            <tbody>
+            {% for i,standing in paidStandings %}
+                <tr {% if loop.first %} class="success"{% endif %}>
+                    <td>#{{ i+1 }}</td>
+                    <td>{{ standing.username }}</td>
+                    <td>{{ standing.points }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            </thead>
+        </table>
+    </div>
+    <div class="col-md-4">
+        <h3>Posiciones Prode Gratis</h3>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Pos.</th>
+                <th>Usuario</th>
+                <th>Puntos</th>
+            </tr>
+            <tbody>
+            {% for i,standing in freeStandings %}
+                <tr {% if loop.first %} class="success"{% endif %}>
+                    <td>#{{ i+1 }}</td>
+                    <td>{{ standing.username }}</td>
+                    <td>{{ standing.points }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            </thead>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

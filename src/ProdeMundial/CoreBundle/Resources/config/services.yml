@@ -12,3 +12,7 @@ services:
         arguments: [@security.context, @prodemundial.core.mercadopago_preferences, %mercadopago_endpoint%]
         tags:
           - { name: twig.extension }
+
+    prodemundial.core.standings_handler:
+        class: ProdeMundial\CoreBundle\Manager\StandingsManager
+        arguments: [@doctrine.orm.entity_manager]
