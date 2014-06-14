@@ -31,3 +31,9 @@ api_standings:
   resource: @ProdeMundialWebBundle/Resources/config/routing/standings.yml
   defaults:
       _format: json
+
+api_games:
+  prefix: /game
+  resource: @ProdeMundialWebBundle/Resources/config/routing/game.yml
+  defaults:
+      _format: json

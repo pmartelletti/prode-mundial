@@ -16,3 +16,7 @@ services:
     prodemundial.core.standings_handler:
         class: ProdeMundial\CoreBundle\Manager\StandingsManager
         arguments: [@doctrine.orm.entity_manager]
+
+    prodemundial.core.predictions_handler:
+        class: ProdeMundial\CoreBundle\Handler\PredictionHandler
+        arguments: [@doctrine.orm.entity_manager]

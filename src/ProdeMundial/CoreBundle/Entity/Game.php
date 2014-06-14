@@ -263,4 +263,9 @@ class Game
 
         return ($this->getDate() < $now) and ($this->getProdeResult());
     }
+
+    public function __toString()
+    {
+        return sprintf("%s vs %s", $this->getHomeTeam(), $this->getAwayTeam());
+    }
 }

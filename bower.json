@@ -12,6 +12,7 @@
     "angular-route": "~1.2.x",
     "angular-resource": "~1.2.x",
     "angular-animate": "~1.2.x",
-    "angular-toastr": "~0.2.4"
+    "angular-toastr": "~0.2.4",
+    "jquery-flot": "~0.8.3"
   }
 }

@@ -1,0 +1,6 @@
+game_tendency:
+    pattern: /{id}/tendency.{_format}
+    defaults: { _controller: ProdeMundialCoreBundle:Game:tendency }
+    methods: [GET]
+    options:
+        expose: true

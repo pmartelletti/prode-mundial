@@ -31,10 +31,13 @@
             <div class="col-md-6" ng-repeat="prediction in predictions | filter:displayGroup">
                 {% verbatim %}
                 <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
+                    <div class="panel-heading clearfix">
+                        <h3 class="panel-title pull-left">
                             {{ prediction.game.date | date:'EEE d MMM - H:mm' }} hs.
                         </h3>
+                        <p class="pull-right">
+                            <i class="fa fa-bar-chart-o" ng-click="predictionTendency($event, prediction.game.id)"></i>
+                        </p>
                     </div>
                     <div class="panel-body">
                         <div class="row" style="margin-bottom: 10px">
@@ -66,6 +69,22 @@
         </div>
     </div>
 </div>
+
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body" style="width: 600px; height: 300px">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 {% endblock %}
 
 {% block javascripts %}
@@ -74,6 +93,8 @@
     <script type="text/javascript" src="{{ asset('bundles/prodemundialweb/vendor/angular-resource/angular-resource.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/prodemundialweb/js/services.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/prodemundialweb/vendor/angular-toastr/dist/angular-toastr.min.js') }}"></script>
+    <script src="{{ asset('bundles/prodemundialweb/vendor/jquery-flot/jquery.flot.js') }}"></script>
+    <script src="{{ asset('bundles/prodemundialweb/vendor/jquery-flot/jquery.flot.pie.js') }}"></script>
     {#<script type="text/javascript" src="{{ asset('bundles/prodemundialweb/js/controllers.js.twig') }}"></script>#}
     {% include 'ProdeMundialWebBundle:Angular:controllers.js.twig' %}
 {% endblock %}

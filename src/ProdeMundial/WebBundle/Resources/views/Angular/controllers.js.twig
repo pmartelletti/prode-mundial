@@ -17,6 +17,35 @@ phonecatApp.controller('PredictionsCtrl', function($scope, $http, $window, Predi
         $scope.displayGroup = group;
     }
 
+    $scope.predictionTendency = function($event, game_id) {
+        var elem = $(event.target);
+        var route = Routing.generate('game_tendency', {id: game_id});
+        $http.get(route).success(function(data){
+            // we draw the chart
+            $("#myModal .modal-title").text("Tendencia de apuestas para: " + data.game);
+            console.log(data.data);
+            $.plot('#myModal .modal-body', data.data, {
+                series: {
+                    pie: {
+                        show: true,
+                        radius: 1,
+                        label: {
+                            show: true,
+                            radius: 4 / 6,
+                            formatter: function (label, series) {
+                                return '<div style="font-size:10pt;text-align:center;padding:2px;color:#333;">' + label + '<br/>' + Math.round(series.percent) + '%</div>';
+                            }
+                        }
+                    }
+                },
+                legend: {
+                    show: false
+                }
+            });
+            $('#myModal').modal('show')
+        })
+    }
+
     $scope.patchPrediction = function($event, prediction_id, result) {
         var elem = $($event.target);
 //        Predictions.patch({predictionId: 241, })
