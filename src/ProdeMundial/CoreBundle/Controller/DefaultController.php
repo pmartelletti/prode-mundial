@@ -11,7 +11,7 @@ class DefaultController extends Controller
     {
         return $this->render('ProdeMundialWebBundle:Default:index.html.twig', array(
             'nextGames' => $this->get('prodemundial.core.game_handler')->getNextGamesGroupedByDate(8),
-            'recentGames' => $this->getDoctrine()->getRepository('ProdeMundialCoreBundle:Game')->findRecentGames(),
+            'recentGames' => $this->get('prodemundial.core.game_handler')->getLastGamesGroupedByDate(8)
         ));
     }
 }

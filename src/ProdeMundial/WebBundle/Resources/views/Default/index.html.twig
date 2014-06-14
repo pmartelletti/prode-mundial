@@ -68,31 +68,47 @@
         </div>
         <div class="col-md-5 col-md-offset-1">
             <h2>Ultimos resultados</h2>
-            {% for game in recentGames %}
+            {% for data in recentGames %}
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">{{ game.date | date('d/m/Y') }}</h3>
+                        <h3 class="panel-title">
+                            {{ data.date | date('D d M') }}
+                        </h3>
                     </div>
                     <div class="panel-body">
-                        <div class="row">
-                            {% set home_team = game.homeTeam %}
-                            <div class="col-md-2">
-                                <img src="{{ flag(home_team.flag) }}" alt="{{ home_team.name }}">
+                        {% for game in data.games %}
+                            <div class="row">
+                                {% set home_team = game.homeTeam %}
+                                <div class="col-md-1">
+                                    <img src="{{ flag(home_team.flag) }}" alt="{{ home_team.name }}">
+                                </div>
+                                <div class="col-md-4">
+                                    <strong>{{ home_team }}</strong>
+                                </div>
+                                <div class="col-md-2">
+                                    {% if not game.isPlayed %}
+                                        <span class="result">-</span>
+                                    {% else %}
+                                        <span class="result">{{ game.homeGoals }} - {{ game.awayGoals }}</span>
+                                    {% endif %}
+                                </div>
+                                {% set away_team = game.awayTeam %}
+                                <div class="col-md-4 text-right">
+                                    <strong>{{ away_team }}</strong>
+                                </div>
+                                <div class="col-md-1">
+                                    <img src="{{ flag(away_team.flag) }}" alt="{{ away_team.name }}">
+                                </div>
                             </div>
-                            <div class="col-md-3">
-                                <strong>{{ home_team }}</strong>
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <small>{{ game.venue }}</small>
+                                </div>
                             </div>
-                            <div class="col-md-2">
-                                {{ game.homeGoals }} - {{ game.awayGoals }}
-                            </div>
-                            {% set away_team = game.awayTeam %}
-                            <div class="col-md-3">
-                                <strong>{{ away_team }}</strong>
-                            </div>
-                            <div class="col-md-2">
-                                <img src="{{ flag(away_team.flag) }}" alt="{{ away_team.name }}">
-                            </div>
-                        </div>
+                            {% if not loop.last %}
+                                <hr>
+                            {% endif %}
+                        {% endfor %}
                     </div>
                 </div>
             {% endfor %}

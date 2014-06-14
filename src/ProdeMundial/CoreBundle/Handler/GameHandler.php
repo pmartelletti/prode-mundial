@@ -32,4 +32,24 @@ class GameHandler
 
         return $result;
     }
+
+    public function getLastGamesGroupedByDate($games = 5)
+    {
+        $games = $this->em->getRepository('ProdeMundialCoreBundle:Game')->findRecentGames($games);
+
+        $result = array();
+        $date = null;
+        foreach($games as $game) {
+            if (empty($date) or $date->format('d/m') != $game->getDate()->format('d/m')) {
+                $date = $game->getDate();
+                $result[$date->format('d/m')] = array(
+                    'games' => array(),
+                    'date' => $date
+                );
+            }
+            $result[$date->format('d/m')]['games'][] = $game;
+        }
+
+        return $result;
+    }
 } 
