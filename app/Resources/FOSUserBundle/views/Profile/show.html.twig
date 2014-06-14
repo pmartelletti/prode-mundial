@@ -25,7 +25,7 @@
                     </tr>
                     <tr>
                         <th>Fecha de Pago</th>
-                        <td>{{ payment.dateUpdated }}</td>
+                        <td>{{ payment.dateUpdated | date('d/m/Y') }}</td>
                     </tr>
                     <tr>
                         <th>Plataforma de pago</th>
