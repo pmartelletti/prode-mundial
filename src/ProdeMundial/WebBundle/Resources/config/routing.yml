@@ -9,10 +9,16 @@ predictions:
     _format: html
 
 standings:
-  pattern: /my/standings
+  pattern: /users/standings
   defaults:
     _controller: ProdeMundialCoreBundle:Standings:index
     _format: html
+
+results:
+  prefix: /results
+  resource: @ProdeMundialWebBundle/Resources/config/routing/results.yml
+  defaults:
+      _format: html
 
 payments:
   prefix: /payments

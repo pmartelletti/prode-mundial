@@ -1,0 +1,99 @@
+{% extends 'ProdeMundialWebBundle:Frontend:base.html.twig' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h2 class="text-right">Resultados Oficiales</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="list-group">
+            {% for group in groups %}
+                <a href="{{ path('group_results', {'slug': group.slug}) }}"
+                   class="list-group-item {% if slug == group.slug %}active{% endif %}">{{ group }}</a>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="col-md-9">
+        <h3>{{ group.name }}</h3>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Pos.</th>
+                <th>Equipo</th>
+                <th class="text-center">PJ</th>
+                <th class="text-center">PG</th>
+                <th class="text-center">PE</th>
+                <th class="text-center">PP</th>
+                <th class="text-center">GF</th>
+                <th class="text-center">GC</th>
+                <th class="text-center">DG</th>
+                <th class="text-center">PTS</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% set pos = 1 %}
+            {% for standing in standings %}
+            <tr {% if pos == 1 or pos == 2 %}class="success" {% endif %}>
+                <td>#{{ pos }}</td>
+                <td>{{ standing.name }}</td>
+                <td class="text-center">{{ standing.PJ }}</td>
+                <td class="text-center">{{ standing.PG }}</td>
+                <td class="text-center">{{ standing.PE }}</td>
+                <td class="text-center">{{ standing.PP }}</td>
+                <td class="text-center">{{ standing.GF }}</td>
+                <td class="text-center">{{ standing.GC }}</td>
+                <td class="text-center">{{ standing.DG }}</td>
+                <td class="text-center">{{ standing.PTS }}</td>
+            </tr>
+            {% set pos = pos + 1 %}
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <h3>Fixture</h3>
+        {% for game in group.games %}
+            <div class="col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            {{ game.date | date('D d M - H:i') }} hs.
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row" style="margin-bottom: 10px">
+                            {% set home_team = game.homeTeam %}
+                            <div class="col-md-1">
+                                <img src="{{ flag(home_team.flag) }}" alt="{{ home_team.name }}">
+                            </div>
+                            <div class="col-md-4">
+                                <strong>{{ home_team }}</strong>
+                            </div>
+                            <div class="col-md-2">
+                                {% if not game.isPlayed %}
+                                    <span class="result">-</span>
+                                {% else %}
+                                    <span class="result">{{ game.homeGoals }} - {{ game.awayGoals }}</span>
+                                {% endif %}
+                            </div>
+                            {% set away_team = game.awayTeam %}
+                            <div class="col-md-4 text-right">
+                                <strong>{{ away_team }}</strong>
+                            </div>
+                            <div class="col-md-1">
+                                <img src="{{ flag(away_team.flag) }}" alt="{{ away_team.name }}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <small>{{ game.venue }}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

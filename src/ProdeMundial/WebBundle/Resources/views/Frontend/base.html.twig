@@ -47,7 +47,7 @@
                 {% set route = app.request.attributes.get('_route') %}
                 <li {% if route == 'app_home' %}class="active"{% endif %}><a href="{{ path('app_home') }}">Home</a></li>
                 <li {% if route == 'predictions' %}class="active"{% endif %}><a href="{{ path('predictions') }}">Mis Pronosticos</a></li>
-                <li><a href="#contact">Resultados / Fixture</a></li>
+                <li><a href="{{ path('group_results') }}">Resultados / Fixture</a></li>
                 <li {% if route == 'standings' %}class="active"{% endif %}><a href="{{ path('standings') }}">Posiciones</a></li>
                 <li><a href="#contact">Ayuda / FAQ</a></li>
             </ul>

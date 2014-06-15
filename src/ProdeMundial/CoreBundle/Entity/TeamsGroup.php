@@ -91,6 +91,22 @@ class TeamsGroup
         return $this;
     }
 
+    /**
+     * @param \ProdeMundial\CoreBundle\Entity\Game[] $games
+     */
+    public function setGames($games)
+    {
+        $this->games = $games;
+    }
+
+    /**
+     * @return \ProdeMundial\CoreBundle\Entity\Game[]
+     */
+    public function getGames()
+    {
+        return $this->games;
+    }
+
     public function __toString()
     {
         return $this->getName();

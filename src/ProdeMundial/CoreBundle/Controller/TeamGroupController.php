@@ -1,7 +1,6 @@
 <?php
 namespace ProdeMundial\CoreBundle\Controller;
 
-
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations\View;
 use FOS\RestBundle\Util\Codes;
@@ -17,32 +16,39 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class GameController extends FOSRestController
+class TeamGroupController extends FOSRestController
 {
-
-    public function tendencyAction(Request $request)
+    /**
+     * @View("ProdeMundialWebBundle:Frontend/Standings:groups.html.twig", statusCode=200)
+     */
+    public function standingsAction(Request $request)
     {
-        $game = $this->findOr404($request);
+        $group = $this->findOr404($request);
 
-        return $this->get('prodemundial.core.predictions_handler')->getTendency($game);
+        return array(
+            'group' => $group,
+            'groups' => $this->getDoctrine()->getRepository('ProdeMundialCoreBundle:TeamsGroup')->findAll(),
+            'standings' => $this->get('prodemundial.core.groups_handler')->getTeamStandings($group),
+            'slug' => $request->get('slug')
+        );
     }
 
     /**
      * @param Request $request
      * @param string $identifier
      *
-     * @return Game
+     * @return TeamsGroup
      *
      * @throws NotFoundHttpException
      */
-    public function findOr404(Request $request, $identifier = 'id')
+    public function findOr404(Request $request, $identifier = 'slug')
     {
 
-        $entity = $this->getDoctrine()->getRepository('ProdeMundialCoreBundle:Game')
-            ->find($request->get($identifier));
+        $entity = $this->getDoctrine()->getRepository('ProdeMundialCoreBundle:TeamsGroup')
+            ->findOneBySlug($request->get($identifier));
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Game.');
+            throw $this->createNotFoundException('Unable to find Group.');
         }
 
         return $entity;

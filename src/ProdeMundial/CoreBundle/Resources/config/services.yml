@@ -20,3 +20,7 @@ services:
     prodemundial.core.predictions_handler:
         class: ProdeMundial\CoreBundle\Handler\PredictionHandler
         arguments: [@doctrine.orm.entity_manager]
+
+    prodemundial.core.groups_handler:
+        class: ProdeMundial\CoreBundle\Handler\TeamGroupHandler
+        arguments: [@doctrine.orm.entity_manager]

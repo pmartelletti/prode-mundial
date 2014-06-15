@@ -1,0 +1,3 @@
+group_results:
+    pattern: /groups/{slug}
+    defaults: { _controller: ProdeMundialCoreBundle:TeamGroup:standings, _format: html, slug: 'Grupo-A' }
