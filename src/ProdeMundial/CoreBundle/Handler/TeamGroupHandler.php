@@ -45,12 +45,12 @@ class TeamGroupHandler
         // dif punts
         if (($cmp = strcmp($a['PTS'], $b['PTS'])) !== 0) {
             return -$cmp;
-        } else if (($cmp = strcmp($a['DG'], $b['DG'])) !== 0) {
-            return $cmp;
+        } else if (($cmp = $a['DG'] - $b['DG']) !== 0) {
+            return -$cmp;
         } else if (($cmp = strcmp($a['GF'], $b['GF'])) !== 0) {
             return -$cmp;
         } else  {
-            return $b['GC'] - $a['GC'];
+            return -strcmp($a['GC'], $b['GC']);
         }
     }
 
