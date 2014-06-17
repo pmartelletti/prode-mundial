@@ -80,7 +80,7 @@ class TeamGroupHandler
             $positions[$conditionTeam]['PG'] += 1;
         }
         else if ($game->getProdeResult() == "D") {
-            $positions[$conditionTeam]['pts'] += 1;
+            $positions[$conditionTeam]['PTS'] += 1;
             $positions[$conditionTeam]['PE'] += 1;
         } else {
             $positions[$conditionTeam]['PP'] += 1;
