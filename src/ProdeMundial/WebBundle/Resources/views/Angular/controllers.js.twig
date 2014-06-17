@@ -14,7 +14,13 @@ phonecatApp.controller('PredictionsCtrl', function($scope, $http, $window, Predi
     $scope.imgDir = $window.imgDir;
 
     $scope.setGroup = function(group) {
+        $scope.actualDate = "";
         $scope.displayGroup = group;
+    }
+
+    $scope.setDate = function(date) {
+        $scope.displayGroup = "";
+        $scope.actualDate = date;
     }
 
     $scope.predictionTendency = function($event, game_id) {

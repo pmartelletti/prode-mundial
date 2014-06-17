@@ -14,6 +14,11 @@
 <div class="row" ng-controller="PredictionsCtrl">
     <div class="col-md-3">
         <div class="list-group">
+            <a href="#" class="list-group-item" ng-click="setDate('{{ "now" | date('Y-m-d') }}')" ng-class="{active:actualDate=='{{ "now" | date('Y-m-d') }}'}">Pronósticos para Hoy</a>
+            <a href="#" class="list-group-item" ng-click="setDate('{{ "tomorrow" | date('Y-m-d') }}')" ng-class="{active:actualDate=='{{ "tomorrow" | date('Y-m-d') }}'}">Pronósticos para manaña</a>
+            <a href="#" class="list-group-item" ng-click="setDate('{{ "+2 day" | date('Y-m-d') }}')" ng-class="{active:actualDate=='{{ "+2 day" | date('Y-m-d') }}'}">Pronósticos para pasado manaña</a>
+        </div>
+        <div class="list-group">
             {% for group in groups %}
             <a href="#" class="list-group-item" ng-click="setGroup('{{ group.slug }}')"
                ng-class="{active:displayGroup=='{{ group.slug }}'}">{{ group }}</a>
@@ -28,7 +33,7 @@
             <p>La veda para cada partido comienza 20 minutos antes del comienzo del mismo. Haste ese momento, podes cambiar tus pronosticos cuantas veces quieras.</p>
         </div>
         <div class="row">
-            <div class="col-md-6" ng-repeat="prediction in predictions | filter:displayGroup">
+            <div class="col-md-6" ng-repeat="prediction in predictions | filter:displayGroup | filter:actualDate | orderBy: 'game.date' ">
                 {% verbatim %}
                 <div class="panel panel-primary">
                     <div class="panel-heading clearfix">
