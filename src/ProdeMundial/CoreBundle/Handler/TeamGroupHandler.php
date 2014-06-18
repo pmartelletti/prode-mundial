@@ -90,7 +90,8 @@ class TeamGroupHandler
         $positions[$conditionTeam]['PJ'] += 1;
         $positions[$conditionTeam]['GF'] += call_user_func(array($game, $conditionGoals));
         $positions[$conditionTeam]['GC'] += call_user_func(array($game, $otherGoals));
-        $positions[$conditionTeam]['DG'] += $positions[$conditionTeam]['GF'] - $positions[$conditionTeam]['GC'];
+        $positions[$conditionTeam]['DG'] +=
+            call_user_func(array($game, $conditionGoals)) - call_user_func(array($game, $otherGoals));
 
         return $positions;
     }
