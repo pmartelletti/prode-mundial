@@ -8,5 +8,6 @@ we can find:
 - AngularJS, consuming the internal API.
 - Twitter Boostrap
 - MercadoPago SDK (PHP)
+- BDD with Behat
 
 Feel free to clone, fork or copy the project in partially or completly. Any PR is welcomed.
