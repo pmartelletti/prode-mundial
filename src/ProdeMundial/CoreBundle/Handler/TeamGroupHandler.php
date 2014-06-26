@@ -95,4 +95,14 @@ class TeamGroupHandler
 
         return $positions;
     }
+
+    public function getTeamForFixture($fixtureKey)
+    {
+        $slug = "Grupo-" .$fixtureKey[1];
+        $group = $this->em->getRepository('ProdeMundialCoreBundle:TeamsGroup')->findOneBySlug($slug);
+        $positions = $this->getTeamStandings($group);
+        $teamName = $positions[$fixtureKey[0] - 1]['name'];
+
+        return $this->em->getRepository('ProdeMundialCoreBundle:Team')->findOneByName($teamName);
+    }
 } 

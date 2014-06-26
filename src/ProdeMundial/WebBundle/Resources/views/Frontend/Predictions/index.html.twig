@@ -19,6 +19,12 @@
             <a href="#" class="list-group-item" ng-click="setDate('{{ "+2 day" | date('Y-m-d') }}')" ng-class="{active:actualDate=='{{ "+2 day" | date('Y-m-d') }}'}">Pronósticos para pasado manaña</a>
         </div>
         <div class="list-group">
+            <a href="#" class="list-group-item" ng-click="setPhase('Octavos de final')" ng-class="{active:phase=='Octavos de final'}">Octavos de final</a>
+            <a href="#" class="list-group-item" ng-click="setPhase('Cuartos de final')" ng-class="{active:phase=='Cuartos de final'}">Cuartos de final</a>
+            <a href="#" class="list-group-item" ng-click="setPhase('Semifinal')" ng-class="{active:phase=='Semifinal'}">Semifinal</a>
+            <a href="#" class="list-group-item" ng-click="setPhase('Partido Final')" ng-class="{active:phase=='Partido Final'}">Final</a>
+        </div>
+        <div class="list-group">
             {% for group in groups %}
             <a href="#" class="list-group-item" ng-click="setGroup('{{ group.slug }}')"
                ng-class="{active:displayGroup=='{{ group.slug }}'}">{{ group }}</a>
@@ -33,7 +39,7 @@
             <p>La veda para cada partido comienza 20 minutos antes del comienzo del mismo. Haste ese momento, podes cambiar tus pronosticos cuantas veces quieras.</p>
         </div>
         <div class="row">
-            <div class="col-md-6" ng-repeat="prediction in predictions | filter:displayGroup | filter:actualDate | orderBy: 'game.date' ">
+            <div class="col-md-6" ng-repeat="prediction in predictions | filter:displayGroup | filter:actualDate | filter:phase | orderBy: 'game.date' ">
                 {% verbatim %}
                 <div class="panel panel-primary">
                     <div class="panel-heading clearfix">

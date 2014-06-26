@@ -59,6 +59,8 @@ class Game
      */
     private $fifaMatchId;
 
+    private $phase;
+
 
     /**
      * Get id
@@ -267,5 +269,27 @@ class Game
     public function __toString()
     {
         return sprintf("%s vs %s", $this->getHomeTeam(), $this->getAwayTeam());
+    }
+
+    public function getWinningTeam()
+    {
+        return $this->prodeResult == 'H' ? $this->getHomeTeam() :
+            ($this->prodeResult == "A" ? $this->awayTeam : null);
+    }
+
+    /**
+     * @param mixed $phase
+     */
+    public function setPhase($phase)
+    {
+        $this->phase = $phase;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPhase()
+    {
+        return $this->phase;
     }
 }

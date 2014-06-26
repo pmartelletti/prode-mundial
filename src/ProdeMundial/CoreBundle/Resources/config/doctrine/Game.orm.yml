@@ -31,6 +31,10 @@ ProdeMundial\CoreBundle\Entity\Game:
         fifaMatchId:
             type: integer
             column: fifa_match_id
+        phase:
+            type: string
+            length: 255
+            nullable: true
     manyToOne:
         group:
             targetEntity: ProdeMundial\CoreBundle\Entity\TeamsGroup

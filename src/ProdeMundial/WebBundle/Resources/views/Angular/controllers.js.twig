@@ -10,17 +10,25 @@ var phonecatApp = angular.module('prodeApp', ['prodeServices', 'toastr']);
 phonecatApp.controller('PredictionsCtrl', function($scope, $http, $window, Predictions, toastr) {
     $scope.predictions = Predictions.query();
 
-    $scope.displayGroup = 'Grupo-A';
+    $scope.actualDate = '{{ "now" | date('Y-m-d') }}';
     $scope.imgDir = $window.imgDir;
 
     $scope.setGroup = function(group) {
         $scope.actualDate = "";
+        $scope.phase = "";
         $scope.displayGroup = group;
     }
 
     $scope.setDate = function(date) {
         $scope.displayGroup = "";
+        $scope.phase = "";
         $scope.actualDate = date;
+    }
+
+    $scope.setPhase = function(phase) {
+        $scope.displayGroup = "";
+        $scope.actualDate = "";
+        $scope.phase = phase;
     }
 
     $scope.predictionTendency = function($event, game_id) {

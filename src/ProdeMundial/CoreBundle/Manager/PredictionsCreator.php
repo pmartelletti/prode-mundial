@@ -5,6 +5,7 @@ namespace ProdeMundial\CoreBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
+use ProdeMundial\CoreBundle\Entity\Game;
 use ProdeMundial\CoreBundle\Entity\Prediction;
 use ProdeMundial\CoreBundle\Entity\User;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -37,5 +38,22 @@ class PredictionsCreator
         }
 
         $this->em->flush();
+    }
+
+    public function createPredictionsForGame(Game $game)
+    {
+        $users = $this->em->getRepository('ProdeMundialCoreBundle:User')->findAll();
+        foreach($users as $user) {
+            $prediction = $this->em->getRepository('ProdeMundialCoreBundle:Prediction')->findOneBy(array('user' => $user, 'game' =>$game));
+            if(!$prediction) {
+                $prediction = new Prediction();
+                $prediction->setGame($game);
+
+                $user->addPrediction($prediction);
+            }
+        }
+
+        $this->em->flush();
+
     }
 } 
