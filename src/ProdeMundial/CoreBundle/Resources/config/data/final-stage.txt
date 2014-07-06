@@ -24,10 +24,10 @@ Cuartos de final:
 
 Semifinal:
 
-(61) Tue Jul/8      W57 - W58      @ Belo Horizonte
-(62) Wed Jul/9      W59 - W60      @ São Paulo
+(61) Tue Jul/8  17:00    W57 - W58      @ Belo Horizonte
+(62) Wed Jul/9  17:00    W59 - W60      @ São Paulo
 
 Partido Final:
 
-(63) Sat Jul/12     L61 - L62   @ Brasília
-(64) Sun Jul/13     W61 - W62   @ Rio de Janeiro
+(63) Sat Jul/12 17:00    L61 - L62   @ Brasília
+(64) Sun Jul/13 17:00    W61 - W62   @ Rio de Janeiro
