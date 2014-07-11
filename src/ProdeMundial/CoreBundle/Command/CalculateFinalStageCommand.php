@@ -6,7 +6,6 @@ namespace ProdeMundial\CoreBundle\Command;
 use ProdeMundial\CoreBundle\Entity\Game;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Config\FileLocator;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\ChoiceQuestion;
@@ -42,6 +41,9 @@ class CalculateFinalStageCommand extends ContainerAwareCommand
 
     }
 
+    /**
+     * @param OutputInterface $output
+     */
     private function parseFinalStageText($phase, $output)
     {
         $locator = new FileLocator($this->getContainer()->get('kernel')->getBundle('ProdeMundialCoreBundle')->getPath()

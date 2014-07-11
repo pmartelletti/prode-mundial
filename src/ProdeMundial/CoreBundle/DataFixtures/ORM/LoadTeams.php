@@ -6,10 +6,8 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use ProdeMundial\CoreBundle\Entity\Team;
 use Symfony\Component\Config\FileLocator;
-use Symfony\Component\Config\Loader\FileLoader;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\Finder\Finder;
 use Symfony\Component\Yaml\Yaml;
 
 class LoadTeams extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface

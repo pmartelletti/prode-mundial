@@ -5,7 +5,6 @@ namespace ProdeMundial\CoreBundle\Payments;
 
 use Doctrine\ORM\EntityManager;
 use ProdeMundial\CoreBundle\Entity\Payment;
-use ProdeMundial\CoreBundle\Entity\PaymentRepository;
 use ProdeMundial\CoreBundle\Entity\User;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\RouterInterface;
@@ -25,6 +24,10 @@ class MercadoPagoGateway
         $this->em = $em;
     }
 
+    /**
+     * @param string $username
+     * @param string $email
+     */
     private function getPaymentItems($username, $email)
     {
         return $preference_data = array(

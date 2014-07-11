@@ -2,8 +2,6 @@
 
 namespace ProdeMundial\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Phase
  */

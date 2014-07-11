@@ -69,6 +69,9 @@ class TeamGroupHandler
         );
     }
 
+    /**
+     * @param string $condition
+     */
     private function addGameResult(Game $game, $positions, $condition)
     {
         $conditionTeam = sprintf('get%sTeam', $condition == "H" ? "Home" : "Away");
