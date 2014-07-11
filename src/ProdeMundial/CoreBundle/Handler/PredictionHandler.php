@@ -28,6 +28,7 @@ class PredictionHandler
 
     /**
      * @param Game $game
+     * @param string $prediction
      * @return \Doctrine\ORM\QueryBuilder
      */
     private function getBaseTendencyQuery(Game $game, $prediction)

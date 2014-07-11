@@ -6,14 +6,8 @@ use FOS\RestBundle\Controller\Annotations\View;
 use FOS\RestBundle\Util\Codes;
 use ProdeMundial\CoreBundle\Entity\Prediction;
 use ProdeMundial\CoreBundle\Form\PredictionType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use FOS\RestBundle\Request\ParamFetcher;
-use FOS\RestBundle\Controller\Annotations\RequestParam;
-use FOS\RestBundle\Controller\Annotations\QueryParam;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PredictionsController extends FOSRestController

@@ -2,9 +2,7 @@
 namespace ProdeMundial\WebBundle\Twig;
 
 
-use Symfony\Bundle\TwigBundle\Extension\AssetsExtension;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\Templating\Helper\CoreAssetsHelper;
 
 class FlagExtension extends  \Twig_Extension
 {
