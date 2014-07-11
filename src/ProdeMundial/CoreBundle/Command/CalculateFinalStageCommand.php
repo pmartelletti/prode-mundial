@@ -84,14 +84,25 @@ class CalculateFinalStageCommand extends ContainerAwareCommand
                             $this->getContainer()->get('prodemundial.core.groups_handler')->getTeamForFixture($matchInfo[6])
                         );
                     } else {
-                        /** @var Game $game1 */
+                        if (strpos($matchInfo[4], 'W')) {
+                            // we look for winning team
+                            $match1Id = str_replace('W', '', $matchInfo[4]);
+                            $match2Id = str_replace('W', '', $matchInfo[6]);
+                            $method = "Winning";
+                        } else {
+                            // we look for loosing team
+                            $match1Id = str_replace('L', '', $matchInfo[4]);
+                            $match2Id = str_replace('L', '', $matchInfo[6]);
+                            $method = "Loosing";
+                        }
+                        /** @var Game $game1 */ 
                         $game1 = $this->getContainer()->get('doctrine.orm.entity_manager')->getRepository('ProdeMundialCoreBundle:Game')
-                            ->findOneByFifaMatchId(str_replace('W', '', $matchInfo[4]));
+                            ->findOneByFifaMatchId($match1Id);
                         /** @var Game $game2 */
                         $game2 = $this->getContainer()->get('doctrine.orm.entity_manager')->getRepository('ProdeMundialCoreBundle:Game')
-                            ->findOneByFifaMatchId(str_replace('W', '', $matchInfo[6]));
-                        $game->setHomeTeam($game1->getWinningTeam());
-                        $game->setAwayTeam($game2->getWinningTeam());
+                            ->findOneByFifaMatchId($match2Id);
+                        $game->setHomeTeam(call_user_func(array($game1, sprintf('get%sTeam', $method))));
+                        $game->setAwayTeam(call_user_func(array($game2, sprintf('get%sTeam', $method))));
                         // we need to find the teams by the winner of the games
                     }
                     $this->getContainer()->get('doctrine.orm.entity_manager')->persist($game);

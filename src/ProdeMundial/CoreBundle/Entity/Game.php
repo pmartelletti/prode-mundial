@@ -277,6 +277,12 @@ class Game
             ($this->prodeResult == "A" ? $this->awayTeam : null);
     }
 
+    public function getLoosingTeam()
+    {
+        return $this->prodeResult == 'A' ? $this->getHomeTeam() :
+            ($this->prodeResult == "H" ? $this->awayTeam : null);
+    }
+
     /**
      * @param mixed $phase
      */
