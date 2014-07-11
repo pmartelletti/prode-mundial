@@ -1,4 +1,4 @@
-Prode Mundial (World Cup Sportsbet)
+Prode Mundial (WC Sportsbet) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pmartelletti/prode-mundial/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/pmartelletti/prode-mundial/?branch=master)
 =============
 
 Developed in Symfony, the following project has the purpose to put in practice several technologies. Among them
